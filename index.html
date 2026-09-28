@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper Title</title>
+  <meta name="description" content="Project page for Paper Title.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <p class="venue">Conference or Journal, Year</p>
+      <h1>Paper Title</h1>
+      <p class="authors">
+        <a href="#">Author One</a><sup>1</sup>,
+        <a href="#">Author Two</a><sup>2</sup>,
+        <a href="#">Author Three</a><sup>1</sup>
+      </p>
+      <p class="affiliations">
+        <span><sup>1</sup>Affiliation One</span>
+        <span><sup>2</sup>Affiliation Two</span>
+      </p>
+
+      <nav class="links" aria-label="Paper links">
+        <a class="button" href="https://arxiv.org/abs/0000.00000">arXiv</a>
+        <a class="button" href="paper.pdf">PDF</a>
+        <a class="button" href="#video">Video</a>
+        <a class="button" href="https://github.com/">Code</a>
+      </nav>
+    </header>
+
+    <section id="video" class="video" aria-label="Video">
+      <!-- Replace VIDEO_ID with the YouTube video id. -->
+      <iframe
+        src="https://www.youtube.com/embed/VIDEO_ID"
+        title="Paper video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </section>
+
+    <section>
+      <h2>Abstract</h2>
+      <p>
+        Replace this paragraph with the paper abstract. Keep it to one or two blocks of text
+        that summarize the problem, the method, and the result.
+      </p>
+    </section>
+
+    <section>
+      <h2>Overview</h2>
+      <p>
+        A short section title followed by one or more paragraphs. Duplicate this section
+        for each part of the page you want to explain.
+      </p>
+      <p>
+        A second paragraph sits under the same heading. Use it for a figure caption, a
+        result, or a short description of the approach.
+      </p>
+    </section>
+
+    <section>
+      <h2>Method</h2>
+      <p>
+        Describe the method here. Add images in an <code>assets/</code> folder and reference
+        them with a standard image tag when you are ready.
+      </p>
+    </section>
+
+    <section>
+      <h2>Citation</h2>
+      <pre><code>@article{author2026title,
+  title   = {Paper Title},
+  author  = {Author One and Author Two and Author Three},
+  journal = {Conference or Journal},
+  year    = {2026}
+}</code></pre>
+    </section>
+  </main>
+</body>
+</html>
