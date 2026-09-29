@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Comparing Utility of Inertial, Occupancy, Semantic, and Intent Information in Human Motion Prediction During Daily Tasks</title>
   <meta name="description" content="Project page for paper.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,8 +25,7 @@
 
       <nav class="links" aria-label="Paper links">
         <a class="button" href="https://arxiv.org/abs/0000.00000">arXiv</a>
-        <a class="button" href="paper.pdf">PDF</a>
-        <a class="button" href="#video">Video</a>
+        <a class="button" href="assets/MotionPredictionPaper_anon.pdf">PDF</a>
         <span class="button button--soon" tabindex="0" aria-disabled="true">
           Code
           <span class="tooltip" role="tooltip">Coming Soon!</span>
@@ -31,19 +33,11 @@
       </nav>
     </header>
 
-    <section id="video" class="video" aria-label="Video">
-      <!-- Replace VIDEO_ID with the YouTube video id. -->
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/MDETJ4LJ4Kg?si=Q-1f9zpNc8aSy544" 
-      title="YouTube video player" frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-      </iframe>
-    </section>
-
-    <section>
-      <h2>Abstract</h2>
-      <p>
-        Accurate human motion prediction is crucial for robotic systems operating around people, 
+    <section class="split">
+      <div>
+        <h2>Abstract</h2>
+        <p>
+          Accurate human motion prediction is crucial for robotic systems operating around people, 
         particularly in complex indoor spaces. In this study, we assess the relative importance 
         of different sources of information in indoor motion prediction with a human motion 
         diffusion model. We collected a dataset of nine naive human subjects conducting 
@@ -59,10 +53,59 @@
         found to be especially useful in predicting deceleration, and provided basic spatial 
         information to the model in the absence of an occupancy map. These results are a first 
         step towards predicting human motion in highly ambiguous indoor scenarios.
-      </p>
+        </p>
+      </div>
+      <video class="clip" src="assets/cropped_walk.mp4" autoplay loop muted playsinline></video>
     </section>
 
-    <section>
+    <section id="video" aria-label="Video">
+
+      <h2>Overview</h2>
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/MDETJ4LJ4Kg?si=J3RMHxHxg894G8Fu" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </section>
+    
+
+    <section class="figures">
+      
+      <h2>Task-Focused Protocol</h2>
+
+      <div class="figure-row">
+        <figure>
+          <video class="clip" src="assets/rgb_clip_grid_h264.mp4" autoplay loop muted playsinline></video>
+          <figcaption>RGB clips from the recorded indoor tasks.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/top_down_map.JPG" alt="Top-down map of one indoor trajectory with task labels and camera insets.">
+          <figcaption>Top-down map of a recorded trajectory.</figcaption>
+        </figure>
+      </div>
+
+
+      <h2>Model Overview</h2>
+      <figure>
+        <img src="assets/model_overview.JPG" alt="Overview of the motion diffusion model, with spatial, gaze, and denoising stages.">
+        <figcaption>Model overview.</figcaption>
+      </figure>
+
+
+      <h2>Example Reconstructed 3D Maps</h2>
+      <!-- <figure>
+        <img src="assets/3D_example.JPG" alt="Three views of a reconstructed indoor scene: color, semantic labels, and occupancy.">
+        <figcaption>3D scene example.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/BEV_example.JPG" alt="Bird's-eye semantic maps at two times, with predicted trajectories.">
+        <figcaption>Bird's-eye view example.</figcaption>
+      </figure> -->
+      <figure>
+        <img src="assets/topdown_maps.jpg" alt="Top-down maps of several indoor environments.">
+        <figcaption>Top-down maps.</figcaption>
+      </figure>
+    </section>
+
+    <!-- <section>
       <h2>Overview</h2>
       <p>
         A short section title followed by one or more paragraphs. Duplicate this section
@@ -80,8 +123,18 @@
         Describe the method here. Add images in an <code>assets/</code> folder and reference
         them with a standard image tag when you are ready.
       </p>
-    </section>
+    </section> -->
 
   </main>
+  <script>
+    document.querySelectorAll("video.clip").forEach((video) => {
+      video.loop = true;
+      video.muted = true;
+      video.addEventListener("ended", () => {
+        video.currentTime = 0;
+        video.play();
+      });
+    });
+  </script>
 </body>
 </html>
