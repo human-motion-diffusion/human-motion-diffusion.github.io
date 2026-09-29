@@ -3,48 +3,62 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Paper Title</title>
-  <meta name="description" content="Project page for Paper Title.">
+  <title>Comparing Utility of Inertial, Occupancy, Semantic, and Intent Information in Human Motion Prediction During Daily Tasks</title>
+  <meta name="description" content="Project page for paper.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main>
     <header class="hero">
-      <p class="venue">Conference or Journal, Year</p>
-      <h1>Paper Title</h1>
+      <p class="venue">In submission: ICRA, 2027</p>
+      <h1>Comparing Utility of Inertial, Occupancy, Semantic, and Intent Information in Human Motion Prediction During Daily Tasks</h1>
       <p class="authors">
-        <a href="#">Author One</a><sup>1</sup>,
-        <a href="#">Author Two</a><sup>2</sup>,
-        <a href="#">Author Three</a><sup>1</sup>
+        <a href="#">Anonymous</a>
       </p>
-      <p class="affiliations">
+      <!-- <p class="affiliations">
         <span><sup>1</sup>Affiliation One</span>
         <span><sup>2</sup>Affiliation Two</span>
-      </p>
+      </p> -->
 
       <nav class="links" aria-label="Paper links">
         <a class="button" href="https://arxiv.org/abs/0000.00000">arXiv</a>
         <a class="button" href="paper.pdf">PDF</a>
         <a class="button" href="#video">Video</a>
-        <a class="button" href="https://github.com/">Code</a>
+        <span class="button button--soon" tabindex="0" aria-disabled="true">
+          Code
+          <span class="tooltip" role="tooltip">Coming Soon!</span>
+        </span>
       </nav>
     </header>
 
     <section id="video" class="video" aria-label="Video">
       <!-- Replace VIDEO_ID with the YouTube video id. -->
-      <iframe
-        src="https://www.youtube.com/embed/VIDEO_ID"
-        title="Paper video"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/MDETJ4LJ4Kg?si=Q-1f9zpNc8aSy544" 
+      title="YouTube video player" frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
       </iframe>
     </section>
 
     <section>
       <h2>Abstract</h2>
       <p>
-        Replace this paragraph with the paper abstract. Keep it to one or two blocks of text
-        that summarize the problem, the method, and the result.
+        Accurate human motion prediction is crucial for robotic systems operating around people, 
+        particularly in complex indoor spaces. In this study, we assess the relative importance 
+        of different sources of information in indoor motion prediction with a human motion 
+        diffusion model. We collected a dataset of nine naive human subjects conducting 
+        simulated indoor daily activities while wearing a pair of Meta Aria glasses. This dataset 
+        includes ten buildings from a university campus, and encompasses 238 minutes of navigation 
+        between daily tasks. Overall, we demonstrate a 42% improvement beyond a constant velocity 
+        baseline. Including body motion, scene representation, and eye gaze fixation data 
+        significantly reduced prediction error. Semantic information was found to be useful for 
+        indoor motion prediction, but to a lesser degree than in outdoor navigation. Providing 
+        explicit intent information reduced error beyond any other addition, suggesting that 
+        incorporating explicit intent estimation or user input are fundamental for finer 
+        prediction of indoor motion. One of the few indicators of intent, eye gaze fixation, was 
+        found to be especially useful in predicting deceleration, and provided basic spatial 
+        information to the model in the absence of an occupancy map. These results are a first 
+        step towards predicting human motion in highly ambiguous indoor scenarios.
       </p>
     </section>
 
@@ -68,15 +82,6 @@
       </p>
     </section>
 
-    <section>
-      <h2>Citation</h2>
-      <pre><code>@article{author2026title,
-  title   = {Paper Title},
-  author  = {Author One and Author Two and Author Three},
-  journal = {Conference or Journal},
-  year    = {2026}
-}</code></pre>
-    </section>
   </main>
 </body>
 </html>
