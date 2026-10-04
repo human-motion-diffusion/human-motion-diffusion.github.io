@@ -21,7 +21,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-family: "SF Pro Text", "SF Pro Display", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 1.125rem;
   line-height: 1.6;
 }
@@ -144,19 +144,18 @@ h1 {
   margin-bottom: 2.75rem;
 }
 
+.split > *,
+.figure-row > * {
+  min-width: 0;
+}
+
 .clip {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
   border-radius: 0.6rem;
   background: #111;
-}
-
-@media (max-width: 720px) {
-  .split,
-  .figure-row {
-    grid-template-columns: 1fr;
-  }
 }
 
 .video {
@@ -182,7 +181,8 @@ h1 {
   margin-bottom: 2rem;
 }
 
-.figure-row figure {
+.figure-row figure,
+.split figure {
   margin: 0;
 }
 
@@ -197,6 +197,7 @@ h1 {
 .figures img {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
   border-radius: 0.6rem;
 }
@@ -243,4 +244,11 @@ pre {
 
 pre code {
   font-size: inherit;
+}
+
+@media (max-width: 720px) {
+  .split,
+  .figure-row {
+    grid-template-columns: 1fr;
+  }
 }

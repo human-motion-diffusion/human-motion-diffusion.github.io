@@ -7,7 +7,7 @@
   <meta name="description" content="Project page for paper.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,7 +24,7 @@
       </p> -->
 
       <nav class="links" aria-label="Paper links">
-        <a class="button" href="https://arxiv.org/abs/0000.00000">arXiv</a>
+        <a class="button" href="https://arxiv.org/abs/2609.37971">arXiv</a>
         <a class="button" href="assets/MotionPredictionPaper_anon.pdf">PDF</a>
         <span class="button button--soon" tabindex="0" aria-disabled="true">
           Code
@@ -81,28 +81,98 @@
           <figcaption>Top-down map of a recorded trajectory.</figcaption>
         </figure>
       </div>
-
+      <p>
+        We asked study participants naive to experimental goals to complete everyday indoor 
+        tasks while wearing Meta Aria glasses. Task sets were ordered objectives to complete 
+        within a space, and were organized such that a route between two tasks was never
+        repeated. This yielded 540 total walked routes across nine subjects and ten locations,
+        for a total of 238 minutes of indoor walking data. This dataset was randomly divided 
+        by trial into training and evaluation sets.
+      </p>
 
       <h2>Model Overview</h2>
       <figure>
         <img src="assets/model_overview.JPG" alt="Overview of the motion diffusion model, with spatial, gaze, and denoising stages.">
         <figcaption>Model overview.</figcaption>
       </figure>
+      <p>
+        We used a diffusion model to predict future head trajectories over a 5s horizon. To 
+        ablate the benefit of increasing system complexity, the model was conditioned on 
+        varied combinations of input data. Possible inputs included head acceleration (A), head
+        velocity (V), scene occupancy (O), semantic label masks (S), and gaze fixation (G). 
+        Oracle goal information was also included as an ablation, to determine the benefit of
+        missing intent information.
+      </p>
 
+      <p>
+        We developed a flexible diffusion model structure composed of four simple transformer 
+        blocks, shown above. Input information were mapped to tokens using CNNs (O, S) or
+        MLPs (A, V, G). This approach was found to be a robust way to include a large 
+        variety of multi-modal information, but further work could find benefit in customizing
+        token computation.
+      </p>
 
-      <h2>Example Reconstructed 3D Maps</h2>
-      <!-- <figure>
-        <img src="assets/3D_example.JPG" alt="Three views of a reconstructed indoor scene: color, semantic labels, and occupancy.">
-        <figcaption>3D scene example.</figcaption>
-      </figure>
+      <h2>Results</h2>
+      <p>
+        In alignment with prior work, inertial
+        and occupancy information significantly reduced error in motion prediction. In
+        task-focused motion, we find that gaze is a valuable signal to both indicate intent to
+        decelerate before it occurs, and to provide basic spatial information. Notably, these
+        results are based on natural gaze behavior from subjects who were unaware of
+        experimental goals. Using gaze as an active control signal to disambiguate uncertain
+        situations is a promising direction of future work.
+      </p>
+
+      <p>
+        Semantic labels were generally informative, but did not produce the same magnitude
+        of improvement as prior outdoor crowd-focused work. This suggests that
+        for indoor, task-focused navigation, supplying semantic information is less
+        informative than in outdoor crowd scenarios. Future work could incorporate the use
+        of semantic label filtering by isolating task-relevant labels, instead of including
+        all possible task objects.
+      </p>
       <figure>
-        <img src="assets/BEV_example.JPG" alt="Bird's-eye semantic maps at two times, with predicted trajectories.">
-        <figcaption>Bird's-eye view example.</figcaption>
-      </figure> -->
-      <figure>
-        <img src="assets/topdown_maps.jpg" alt="Top-down maps of several indoor environments.">
-        <figcaption>Top-down maps.</figcaption>
+        <img src="assets/mode_comparison_nogaze_modality.png" alt="Relative performance of models with different information levels across motion categories, without gaze.">
+        <figcaption>
+          Relative performance of models with different information levels, across
+          categories of motion, without gaze. Velocity and occupancy information provided the
+          largest relative error reduction, while semantic information provided a smaller
+          benefit. Abbreviations are C - Constant Velocity, A - Acceleration, V - Velocity,
+          O - Occupancy, S - Semantic.
+        </figcaption>
       </figure>
+
+      <figure>
+        <img src="assets/mode_comparison_gaze_pairs.png" alt="Effect of introducing gaze to equivalent models without gaze across motion categories.">
+        <figcaption>
+          The effect of introducing gaze to an equivalent model without gaze for each
+          level of model complexity. Gaze consistently improves prediction accuracy in all
+          models and motion categories, with the exception of AVOS vs AVOSG acceleration.
+        </figcaption>
+      </figure>
+
+      <div class="split">
+        <div>
+          <p>
+            
+          Even with gaze data, ambiguous situations are common in human motion, and without
+          higher-level knowledge of task goals or individual routines, accurate long-horizon
+          motion prediction is a major challenge. Analysis of models with oracle task and route
+          information demonstrated that intent inference is still a challenge, even with
+          significant other sources of information. Particularly, the challenge of predicting the
+          timing of motion initiation is highly relevant for indoor scenarios and seemingly
+          infeasible with vision data alone. 
+          </p>
+        </div>
+        <figure>
+          <img src="assets/mode_comparison_table_III.png" alt="Impact of including explicit goal and A-star path information in the best-performing ablated model.">
+          <figcaption>
+            The impact of including explicit goal information in the best-performing
+            ablated model (AVOSG). Goal information provides large benefits in turning and
+            deceleration, but has limited impact on acceleration prediction accuracy.
+          </figcaption>
+        </figure>
+      </div>
     </section>
 
     <!-- <section>
